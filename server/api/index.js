@@ -29,6 +29,19 @@ router.get('/candies', async (req, res, next) => {
   }
 });
 
+router.get('/candies/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = await Candy.findById(+id);
+    console.log(data);
+    if (!data) res.sendStatus(404);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
 router.use((req, res, next) => {
   const err = new Error('API route not found!');
   err.status = 404;

@@ -1,3 +1,17 @@
+## Notes from dan's live code
+
+he used some additional validation aside from allownull: false - specifically it was in the validate object as notEmpty
+
+refactor Candylist to have cmd instead of root. This is in case we ever want to expand our homepage to be more than just a candy list
+
+He used a switch statement to wrap his routes
+
+Browserrouter vs. HashRouter
+Browserrouter - prefices front end routes with a /
+HashRouter - prefices front end routes with a #
+
+put our BRouter on the highest compoenent that is route sensitive
+
 # Goodie Bag
 
 ## Getting started
@@ -23,19 +37,19 @@ For this project, you must use Express to handle HTTP requests and Sequelize to 
 
 For the requirements, refer to the following file:
 
-* `REQUIREMENTS.md` - contains the functional requirements of the project
+- `REQUIREMENTS.md` - contains the functional requirements of the project
 
 Make sure to read them carefully!
 
 ## Other Important Info
 
 ### How to test functionality without a frontend
+
 - GET: use your browser
 - POST / PUT / DELETE :
- - CLI (command line interface) with `curl`
-   - e.g. `curl -H "Content-Type: application/json" -X POST -d '{"username":"kate","password":"1234"}' http://localhost:3000/api/login`
-   - `-H`: headers. `-X`: verb. `-d`: data (must be of the type specified in headers). http://[address]:[port]/[route_path]
- - [Postman](https://www.getpostman.com/)
-   ![](https://www.dropbox.com/s/4fk3b90cd0i1a5y/postman_post.png?raw=true)
+- CLI (command line interface) with `curl`
+  - e.g. `curl -H "Content-Type: application/json" -X POST -d '{"username":"kate","password":"1234"}' http://localhost:3000/api/login`
+  - `-H`: headers. `-X`: verb. `-d`: data (must be of the type specified in headers). http://[address]:[port]/[route_path]
+- [Postman](https://www.getpostman.com/)
+  ![](https://www.dropbox.com/s/4fk3b90cd0i1a5y/postman_post.png?raw=true)
 - Databases: use Sequelize in your routes and see if you are receiving what you expect
-
