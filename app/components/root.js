@@ -1,17 +1,36 @@
-import React from 'react'
+import React from 'react';
+import Main from './Main';
+import AllCandies from './AllCandies';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchAllCandies } from '../reducers';
 
-const Root = () => {
-  return (
-    <div>
-      <nav>
-        Goodie Bag
-      </nav>
-      <main>
-        <h1>Welcome to the Goodie Bag!</h1>
-        <p>What a nice home page for your goodies!</p>
-      </main>
-    </div>
-  )
+class Root extends React.Component {
+  componentDidMount() {
+    this.props.fetchAllCandies();
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <NavLink to="/">Goodie bag</NavLink>
+            <NavLink to="/candies">All Candies</NavLink>
+          </nav>
+          <Route path="/" exact component={Main} />
+          <Route
+            path="/candies"
+            exact
+            render={() => <AllCandies candies={[]} />}
+          />
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
-export default Root
+const mapDispatchToProps = dispatch => ({
+  fetchAllCandies: () => dispatch(fetchAllCandies()),
+});
+
+export default connect(null, mapDispatchToProps)(Root);
